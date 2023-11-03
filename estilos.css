@@ -1,6 +1,42 @@
 body {
-  background-color: black;
+  background-color: #f6f9fc;
 }
 .container {
-  background-color: black;
+  display: flex;
+  justify-content: center;
+  margin: 0px 100px;
+}
+.container .estados {
+  font-size: 26px;
+  background-color: #747fe0;
+  box-shadow: #26394d 0px 20px 30px -10px;
+}
+.container .estados .estado {
+  color: white;
+}
+.container .estados .estado .info {
+  color: #ffb108;
+}
+.container .containerintro {
+  justify-content: left;
+}
+.container .containerintro .nombre {
+  color: #747fe0;
+  padding-top: 150px;
+  text-align: center;
+}
+.container .containerintro .descripcion {
+  font-size: 20px;
+}
+.container .navcontainer {
+  color: black;
+}
+.container .navcontainer .nav {
+  text-align: center;
+}
+.container .navcontainer .nav .navtext {
+  font-size: 25px;
+  text-decoration: none;
+  list-style: none;
+  margin-right: 20px;
 }
