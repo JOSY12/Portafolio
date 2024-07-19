@@ -96,7 +96,7 @@ console.log(calcularPerimetroTrapecio(10, 4, 6, 10)) //30
 
 //aqui empieza el problema 2
 
-function main() {
+function calcularedades() {
   let edades = [];
 
   const num_personas = 10;
@@ -154,7 +154,7 @@ function main() {
 }
 
 // Llamada a la función principal
-main();
+calcularedades();
 
 //aqui termina el problema 2
 
@@ -228,7 +228,7 @@ function mezclar_vectores(vector1, vector2) {
   return mezcla;
 }
 
-function main() {
+function ordenarlistas() {
   let vector1 = solicitar_vector("Vector 1");
   let vector2 = solicitar_vector("Vector 2");
 
@@ -240,7 +240,7 @@ function main() {
 }
 
 // Llamada a la función principal
-main();
+ordenarlistas();
 
 //aqui termina el problema 3
 
