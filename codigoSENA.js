@@ -1,6 +1,6 @@
 //aqui empieza las tablas postgresql
 
--- Tabla Aeropuerto
+-- tabla Aeropuerto
 CREATE TABLE Aeropuerto (
     Codigo CHAR(3) PRIMARY KEY,
     Nombre VARCHAR(100) NOT NULL,
@@ -8,14 +8,14 @@ CREATE TABLE Aeropuerto (
     Pais VARCHAR(100) NOT NULL
 );
 
--- Tabla ModeloAvion
+-- tabla ModeloAvion
 CREATE TABLE ModeloAvion (
     ID_Modelo SERIAL PRIMARY KEY,
     Nombre VARCHAR(100) NOT NULL,
     Capacidad INT NOT NULL
 );
 
--- Tabla ProgramaVuelo
+-- tabla ProgramaVuelo
 CREATE TABLE ProgramaVuelo (
     NumeroVuelo VARCHAR(10) PRIMARY KEY,
     LineaAerea VARCHAR(100) NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE ProgramaVuelo (
     FOREIGN KEY (AeropuertoAterrizaje) REFERENCES Aeropuerto(Codigo)
 );
 
--- Tabla Vuelo
+-- tabla Vuelo
 CREATE TABLE Vuelo (
     ID_Vuelo SERIAL PRIMARY KEY,
     Fecha DATE NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE Vuelo (
     FOREIGN KEY (NumeroVuelo) REFERENCES ProgramaVuelo(NumeroVuelo)
 );
 
--- Tabla EscalaTecnica
+-- tabla EscalaTecnica
 CREATE TABLE EscalaTecnica (
     ID_Escala SERIAL PRIMARY KEY,
     NumeroVuelo VARCHAR(10),
@@ -46,7 +46,7 @@ CREATE TABLE EscalaTecnica (
     FOREIGN KEY (AeropuertoEscala) REFERENCES Aeropuerto(Codigo)
 );
 
--- Tabla intermedia Aeropuerto_ModeloAvion para la relación muchos a muchos
+-- tabla intermedia Aeropuerto_ModeloAvion para la relación muchos a muchos
 CREATE TABLE Aeropuerto_ModeloAvion (
     CodigoAeropuerto CHAR(3),
     ID_Modelo INT,
@@ -58,24 +58,24 @@ CREATE TABLE Aeropuerto_ModeloAvion (
 
 // -- estas lineas de codigo que siguen son para probar la funcionalidad de de las tablas anteriores 
 // --    y poder crear datos en cada tabla se pueden probar copiando el codigo
-// --   pueden probarse en linea aqui en esta pagina o usando el pgadmin en windows o mac :
+// --   pueden probarse en linea aqui en esta pagina o usando el pgadmin en windows o mac o cualquier otro compilador postgresql :
 
 // -- https://onecompiler.com/postgresql
 
 
--- Insertar datos en la tabla Aeropuerto
+-- inserta datos en la tabla Aeropuerto
 INSERT INTO Aeropuerto (Codigo, Nombre, Ciudad, Pais) VALUES
 ('JFK', 'John F. Kennedy International Airport', 'New York', 'USA'),
 ('LAX', 'Los Angeles International Airport', 'Los Angeles', 'USA'),
 ('ORD', 'Hare International Airport', 'Chicago', 'USA');
 
--- Insertar datos en la tabla ModeloAvion
+-- inserta datos en la tabla ModeloAvion
 INSERT INTO ModeloAvion (Nombre, Capacidad) VALUES
 ('Boeing 737', 189),
 ('Airbus A320', 180),
 ('Boeing 777', 396);
 
--- Insertar datos en la tabla ProgramaVuelo
+-- inserta datos en la tabla ProgramaVuelo
 INSERT INTO ProgramaVuelo (NumeroVuelo, LineaAerea, DiasSemana, AeropuertoDespegue, AeropuertoAterrizaje) VALUES
 ('AA100', 'American Airlines', 'Lunes, Miércoles, Viernes', 'JFK', 'LAX'),
 ('UA200', 'United Airlines', 'Martes, Jueves, Sábado', 'LAX', 'ORD');
@@ -85,12 +85,12 @@ INSERT INTO Vuelo (Fecha, PlazasVacias, ID_Modelo, NumeroVuelo) VALUES
 ('2024-08-05', 10, 1, 'AA100'),
 ('2024-08-06', 20, 2, 'UA200');
 
--- Insertar datos en la tabla EscalaTecnica
+-- inserta datos en la tabla EscalaTecnica
 INSERT INTO EscalaTecnica (NumeroVuelo, AeropuertoEscala) VALUES
 ('AA100', 'ORD'),
 ('UA200', 'JFK');
 
--- Insertar datos en la tabla intermedia Aeropuerto_ModeloAvion
+-- inserta datos en la tabla intermedia Aeropuerto_ModeloAvion
 INSERT INTO Aeropuerto_ModeloAvion (CodigoAeropuerto, ID_Modelo) VALUES
 ('JFK', 1),
 ('JFK', 2),
