@@ -1,226 +1,461 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mi Portafolio</title>
-    <link rel="stylesheet" href="styles.css">
-      <link rel="icon" href="./logo-color.png" />
-</head>
-<body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#projects">[proyectos]</a>
-            <a href="#contact">[Contacto]</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Josmer Bertel | Portafolio IDE</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div>
+        <div class="sidebar-title" data-es="Explorador" data-en="Explorer">
+          Explorador
         </div>
-    </nav>
+        <ul class="file-list">
+          <li class="file-item active" onclick="switchFile('index.html')">
+            <span class="icon">📄</span>
+            <span class="f-name" data-es="index.html" data-en="profile.html"
+              >index.html</span
+            >
+          </li>
+          <li class="file-item" onclick="switchFile('proyectos.json')">
+            <span class="icon">📦</span>
+            <span
+              class="f-name"
+              data-es="proyectos.json"
+              data-en="projects.json"
+              >proyectos.json</span
+            >
+          </li>
+          <li class="file-item" onclick="switchFile('contacto.js')">
+            <span class="icon">📧</span>
+            <span class="f-name" data-es="contacto.js" data-en="contact.js"
+              >contacto.js</span
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="lang-selector">
+        <button onclick="setLang('es')" id="btn-es">ES</button>
+        <button onclick="setLang('en')" id="btn-en">EN</button>
+      </div>
+    </aside>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Josmer Web Dev</h1>
-        <p>
-            soy desarrollador Web <span class="keyword">fullstack</span>. mi pasion<br/>
-            es construir experiencias de usuario simples pero atractivas.
-        </p>
-        <p>
-            echa un vistaso a mis <a href="#projects">[proyectos]</a>
-        </p>
-    </section>
-
-    <!-- Info Section -->
-    <section class="info-section">
-        <div class="info-grid">
-            <!-- Location -->
-            <div class="code-block">
-                <div>
-                    <span class="property">josmer</span>.<span class="keyword">localización</span>
-                </div>
-                <div class="code-content">
-                    <span class="string">"Montelibano, Cordoba, Colombia"</span>
-                </div>
-            </div>
-
-            <!-- Contact Info -->
-            <div class="code-block">
-                <div>
-                    <span class="property">josmer</span>.<span class="keyword">contactoInfo</span>
-                </div>
-                <div class="code-content">
-                    <span class="bracket">[</span><a href="mailto:josmer1997@hotmail.es">"josmer1997@hotmail.es"</a>,<br/>
-                    <a href="https://www.linkedin.com/in/josmer-bertel-calle-12569a236/" target="_blank" rel="noopener noreferrer">"LinkedIn"</a>,<br/>
-                    <a href="https://github.com/JOSY12" target="_blank" rel="noopener noreferrer">"github"</a><span class="bracket">]</span>
-                </div>
-            </div>
-
-            <!-- CV -->
-            <div class="code-block">
-                <div>
-                    <span class="property">josmer</span>.<span class="keyword">CV</span>
-                </div>
-                <div class="code-content">
-                    <a href="./espResume cv-JOSMER BERTEL CALLE.pdf">"josmer.espCV.pdf"</a><br/>
-                    <a href="./engResume cv-JOSMER BERTEL CALLE.pdf">"josmer.engCV.pdf"</a>
-                </div>
-            </div>
-
-            <!-- Interests -->
-            <div class="code-block">
-                <div>
-                    <span class="property">josmer</span>.<span class="keyword">intereses</span>
-                </div>
-                <div class="code-content">
-                    <span class="bracket">[</span><span class="string">"Diseño"</span>, <span class="string">"Aprender"</span>, <span class="string">"Cocina"</span>, <span class="string">"bases de datos"</span>,<br/>
-                    <span class="string">"Back-End"</span><span class="bracket">]</span>
-                </div>
-            </div>
-
-            <!-- Education -->
-            <div class="code-block">
-                <div>
-                    <span class="property">josmer</span>.<span class="keyword">educación</span>
-                </div>
-                <div class="code-content">
-                    <span class="bracket">[</span> <span class="string">"soy henry bootcamp"</span>, <span class="string">"TECNÓLOGO en analisis<br/>
-                    y desarrollo de sofware"</span>, <span class="string">"autodidacta"</span>, <span class="string">"Cursos en<br/>
-                    linea"</span>, <span class="string">"Freecodecamp"</span><span class="bracket">]</span>
-                </div>
-            </div>
-
-            <!-- Skills -->
-            <div class="code-block">
-                <div>
-                    <span class="property">josmer</span>.<span class="keyword">Habilidades</span>
-                </div>
-                <div class="code-content">
-                    <span class="bracket">[</span><span class="string">"Html"</span>,<span class="string">"Css"</span>,<span class="string">"Less"</span>, <span class="string">"JavaScript"</span>,<br/>
-                    <span class="string">"Tailwind"</span>,<span class="string">"Boostrap"</span>,<span class="string">"Mysql"</span>, <span class="string">"React"</span>, <span class="string">"Redux"</span>, <span class="string">"Nodejs"</span>,<br/>
-                    <span class="string">"Webpack"</span>, <span class="string">"Git"</span>, <span class="string">"Postgresql"</span>, <span class="string">"Sequelise"</span>, <span class="string">"Express"</span>,<br/>
-                    <span class="string">"zustand"</span>,<br/>
-                    <span class="string">"Mercadopago"</span>,<span class="string">"Stripe"</span>,<span class="string">"Docker"</span>,<span class="string">"Typescript"</span>,<span class="string">"Angular"</span><span class="bracket">]</span>
-                </div>
-            </div>
+    <main class="main-editor">
+      <div class="tabs" id="tab-container">
+        <div class="tab active" id="tab-header">index.html</div>
+      </div>
+      <div id="view-index.html" class="editor-view active">
+        <div class="line">
+          <span class="ln">1</span
+          ><span
+            class="comment"
+            data-es="// Perfil Profesional"
+            data-en="// Professional Profile"
+            >// Perfil Profesional</span
+          >
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects-section">
-        <h2 class="section-title">## proyectos</h2>
-
-        <div class="projects-container">
-            <!-- Fast-checkout -->
-            <article class="project-card">
-                <a href="https://fast-checkout.vercel.app/" target="_blank" rel="noopener noreferrer">
-                    <div class="project-image">
-                        <img src="./fast-checkout-high-resolution-logo-white.png" alt="Fast-checkout">
-                    </div>
-                    <h4 class="project-title">#### Fast-checkout</h4>
-                    <p class="project-description">
-                        Base de Ecomerse solo para probar el sistema de pago con diseño minimalista y carrito de compras, 
-                        manejo de carrito de compras, filtrado de productos y paginado con plantilla basica.
-                    </p>
-                    <span class="visit-button">Visitar sitio web</span>
-                </a>
-            </article>
-
-            <!-- Cocina pura -->
-            <article class="project-card">
-                <a href="https://cocinapura.vercel.app/" target="_blank" rel="noopener noreferrer">
-                    <div class="project-image">
-                        <img src="./cocina-pura-high-resolution-logo.png" alt="Cocina pura">
-                    </div>
-                    <h4 class="project-title">#### Cocina pura</h4>
-                    <p class="project-description">
-                        plantilla estilo minimalista para demostraciones de recetas de comida y blogs de cocina con paginado simple
-                    </p>
-                    <span class="visit-button">Visitar sitio web</span>
-                </a>
-            </article>
-
-            <!-- SocialLink
-            <article class="project-card">
-                <div class="project-image">
-                    <img src="./social-link-high-resolution-logo-white.png" alt="SocialLink">
-                </div>
-                <h4 class="project-title">
-                    #### SocialLink <span class="dev-status">(En desarrollo)</span>
-                </h4>
-                <p class="project-description">
-                    Pagina web para compartir post estilo twitter con caracteristicas basicas de me gusta subida de imagenes , 
-                    registro,login y autenticacion en servidor.
-                </p>
-            </article> -->
-
-            <!-- Techsells -->
-            <article class="project-card">
-                <a href="https://proyecto-techsells.vercel.app/" target="_blank" rel="noopener noreferrer">
-                    <div class="project-image">
-                        <img src="./techsells-high-resolution-logo-white.png" alt="Techsells">
-                    </div>
-                    <h4 class="project-title">#### Techsells</h4>
-                    <p class="project-description">
-                        Ecomerse con carrito de compras, manejo de carrito de compras, filtrado de productos y paginado, 
-                        registro,login y autenticacion en servidor,tokens de seguridad, token de usuario compra de productos 
-                        e historial de compras, modificacion de perfil y comentarios en productos y calificacion, items favoritos.
-                    </p>
-                    <span class="visit-button">Visitar sitio web</span>
-                </a>
-            </article>
-
-
-             <article class="project-card">
-                <a href="https://play.google.com/store/apps/details?id=com.MisfitGames.CaveScape" target="_blank" rel="noopener noreferrer">
-                    <div class="project-image">
-                        <img src="./cavescapeicono.png" alt="Techsells">
-                    </div>
-                    <h4 class="project-title">#### Cave Scape(Mobile Game)</h4>
-                    <p class="project-description">
-                         Juego top-down 2d de plataformas para android, hecho en unity 
-                    </p>
-                    <span class="visit-button">Descargar</span>
-                </a>
-            </article>
-
-             <article class="project-card">
-                <a href="https://play.google.com/store/apps/details?id=com.MisfitGames.StellarAsault" target="_blank" rel="noopener noreferrer">
-                    <div class="project-image">
-                        <img src="./Gemini_Generated_Image_qsg1bpqsg1bpqsg1 (1).png" alt="Techsells">
-                    </div>
-                    <h4 class="project-title">#### Stellar Assault(Mobile Game)</h4>
-                    <p class="project-description">
-                         Juego 2d space endless waves survivor para android, hecho en unity 
-                    </p>
-                    <span class="visit-button">Descargar</span>
-                </a>
-            </article>
-            <article class="project-card">
-                <a href="https://play.google.com/store/apps/details?id=com.MisfitGames.TapTapMine" target="_blank" rel="noopener noreferrer">
-                    <div class="project-image">
-                        <img src="./Icono.png" alt="Techsells">
-                    </div>
-                    <h4 class="project-title">#### Tap Tap Mine(Mobile Game)</h4>
-                    <p class="project-description">
-                         Juego 2d Incremental  para android, hecho en unity 
-                    </p>
-                    <span class="visit-button">Descargar</span>
-                </a>
-            </article>
+        <div class="line">
+          <span class="ln">2</span><span class="keyword">const</span>
+          <span class="prop">josmer</span> = {
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <h2 class="contact-title">## Contacto!</h2>
-        <div class="contact-links">
-            <a href="mailto:josmer1997@hotmail.es">josmer1997@hotmail.es</a>
-            <a href="https://www.linkedin.com/in/josmer-bertel-calle-12569a236/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://github.com/JOSY12" target="_blank" rel="noopener noreferrer">github</a>
+        <div class="line indent">
+          <span class="ln">3</span
+          ><span class="prop" data-es="nombre" data-en="name">nombre</span>:
+          <span class="string">"Josmer Uriel Bertel Calle"</span>,
         </div>
-    </section>
+        <div class="line indent">
+          <span class="ln">4</span
+          ><span class="prop" data-es="especialidad" data-en="specialty"
+            >especialidad</span
+          >: <span class="string">"Fullstack Web & Game Developer"</span>,
+        </div>
+        <div class="line indent">
+          <span class="ln">5</span
+          ><span class="prop" data-es="intereses" data-en="interests"
+            >intereses</span
+          >: [<span class="string" data-es='"Diseño"' data-en='"Design"'
+            >"Diseño"</span
+          >,
+          <span class="string" data-es='"Aprender"' data-en='"Learning"'
+            >"Aprender"</span
+          >,
+          <span class="string" data-es='"Cocina"' data-en='"Cooking"'
+            >"Cocina"</span
+          >,
+          <span class="string" data-es='"bases de datos"' data-en='"databases"'
+            >"bases de datos"</span
+          >, <span class="string">"Back-End"</span>],
+        </div>
+        <div class="line indent">
+          <span class="ln">6</span
+          ><span class="prop" data-es="educación" data-en="education"
+            >educación</span
+          >: [<span class="string">"soy henry bootcamp"</span>,
+          <span
+            class="string"
+            data-es='"TECNÓLOGO en analisis y desarrollo de software"'
+            data-en='"Software Analysis & Development Technologist"'
+            >"TECNÓLOGO en analisis y desarrollo de software"</span
+          >,
+          <span class="string" data-es='"autodidacta"' data-en='"self-taught"'
+            >"autodidacta"</span
+          >,
+          <span
+            class="string"
+            data-es='"Cursos en linea"'
+            data-en='"Online courses"'
+            >"Cursos en linea"</span
+          >, <span class="string">"Freecodecamp"</span>],
+        </div>
+        <div class="line indent">
+          <span class="ln">7</span
+          ><span class="prop" data-es="habilidades" data-en="skills"
+            >habilidades</span
+          >: [<span class="string">"Html"</span>,
+          <span class="string">"Css"</span>, <span class="string">"Less"</span>,
+          <span class="string">"JavaScript"</span>,
+          <span class="string">"Tailwind"</span>,
+          <span class="string">"Boostrap"</span>,
+          <span class="string">"Mysql"</span>,
+          <span class="string">"React"</span>,
+          <span class="string">"Redux"</span>,
+          <span class="string">"Nodejs"</span>,
+          <span class="string">"Webpack"</span>,
+          <span class="string">"Git"</span>,
+          <span class="string">"Postgresql"</span>,
+          <span class="string">"Sequelise"</span>,
+          <span class="string">"Express"</span>,
+          <span class="string">"zustand"</span>,
+          <span class="string">"Mercadopago"</span>,
+          <span class="string">"Stripe"</span>,
+          <span class="string">"Docker"</span>,
+          <span class="string">"Typescript"</span>,
+          <span class="string">"Angular"</span>],
+        </div>
+        <div class="line indent">
+          <span class="ln">8</span
+          ><span class="prop" data-es="localización" data-en="location"
+            >localización</span
+          >: <span class="string">"Montelibano, Cordoba, Colombia"</span>
+        </div>
+        <div class="line"><span class="ln">9</span>};</div>
+        <div class="line">
+          <span class="ln">11</span
+          ><span
+            class="comment"
+            data-es="// Pasión por crear experiencias simples y atractivas."
+            data-en="// Passion for creating simple and attractive experiences."
+            >// Pasión por crear experiencias simples y atractivas.</span
+          >
+        </div>
+      </div>
 
-    <!-- Footer -->
-    <footer>
-        creador por josmer bertel © 2023
-    </footer>
-</body>
+      <div id="view-proyectos.json" class="editor-view">
+        <div class="line">
+          <span class="ln">1</span
+          ><span
+            class="keyword"
+            data-es='"proyectos_recientes"'
+            data-en='"recent_projects"'
+            >"proyectos_recientes"</span
+          >: [
+        </div>
+        <div class="grid">
+          <a
+            href="https://proyecto-techsells.vercel.app/"
+            target="_blank"
+            class="card"
+          >
+            <div class="card-header">
+              <span class="tech-icon">⚛️</span
+              ><span class="btn-visit" data-es="Visitar" data-en="Visit"
+                >Visitar</span
+              >
+            </div>
+            <h4>Techsells</h4>
+            <p
+              data-es="E-commerce completo con React, Redux, MercadoPago y Stripe. Panel de usuario e historial."
+              data-en="Full E-commerce with React, Redux, MercadoPago and Stripe. User panel and history."
+            >
+              E-commerce completo con React, Redux, MercadoPago y Stripe. Panel
+              de usuario e historial.
+            </p>
+            <div class="tech-stack">
+              <i class="devicon-react-original colored"></i
+              ><i class="devicon-redux-original colored"></i
+              ><i class="devicon-postgresql-plain colored"></i>
+            </div>
+          </a>
+          <a
+            href="https://fast-checkout.vercel.app/"
+            target="_blank"
+            class="card"
+          >
+            <div class="card-header">
+              <span class="tech-icon">⚡</span
+              ><span class="btn-visit" data-es="Visitar" data-en="Visit"
+                >Visitar</span
+              >
+            </div>
+            <h4>Fast-checkout</h4>
+            <p
+              data-es="Demo de sistema de pagos minimalista con carrito y filtrado de productos."
+              data-en="Minimalist payment system demo with cart and product filtering."
+            >
+              Demo de sistema de pagos minimalista con carrito y filtrado de
+              productos.
+            </p>
+            <div class="tech-stack">
+              <i class="devicon-javascript-plain colored"></i
+              ><i class="devicon-css3-plain colored"></i>
+            </div>
+          </a>
+          <a href="https://cocinapura.vercel.app/" target="_blank" class="card">
+            <div class="card-header">
+              <span class="tech-icon">🥗</span
+              ><span class="btn-visit" data-es="Visitar" data-en="Visit"
+                >Visitar</span
+              >
+            </div>
+            <h4>Cocina Pura</h4>
+            <p
+              data-es="Plantilla minimalista para blogs de cocina y recetas con navegación simple."
+              data-en="Minimalist template for cooking and recipe blogs with simple navigation."
+            >
+              Plantilla minimalista para blogs de cocina y recetas con
+              navegación simple.
+            </p>
+            <div class="tech-stack">
+              <i class="devicon-html5-plain colored"></i
+              ><i class="devicon-css3-plain colored"></i>
+            </div>
+          </a>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.MisfitGames.TapTapMine"
+            target="_blank"
+            class="card"
+          >
+            <div class="card-header">
+              <span class="tech-icon">⛏️</span
+              ><span class="btn-visit">Google Play</span>
+            </div>
+            <h4>Tap Tap Mine</h4>
+            <p
+              data-es="Juego incremental 2D para Android hecho en Unity. Sin anuncios forzados."
+              data-en="2D incremental game for Android made in Unity. No forced ads."
+            >
+              Juego incremental 2D para Android hecho en Unity. Sin anuncios
+              forzados.
+            </p>
+            <div class="tech-stack">
+              <i class="devicon-unity-original"></i
+              ><i class="devicon-csharp-plain colored"></i>
+            </div>
+          </a>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.MisfitGames.StellarAsault"
+            target="_blank"
+            class="card"
+          >
+            <div class="card-header">
+              <span class="tech-icon">🚀</span
+              ><span class="btn-visit">Google Play</span>
+            </div>
+            <h4>Stellar Assault</h4>
+            <p
+              data-es="Wave survivor espacial en 2D. Supervivencia y oleadas infinitas."
+              data-en="2D space wave survivor. Survival and infinite waves."
+            >
+              Wave survivor espacial en 2D. Supervivencia y oleadas infinitas.
+            </p>
+            <div class="tech-stack">
+              <i class="devicon-unity-original"></i
+              ><i class="devicon-csharp-plain colored"></i>
+            </div>
+          </a>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.MisfitGames.CaveScape"
+            target="_blank"
+            class="card"
+          >
+            <div class="card-header">
+              <span class="tech-icon">🕹️</span
+              ><span class="btn-visit">Google Play</span>
+            </div>
+            <h4>Cave Scape</h4>
+            <p
+              data-es="Plataformas 2D con vista top-down para dispositivos móviles Android."
+              data-en="2D platformer with top-down view for Android mobile devices."
+            >
+              Plataformas 2D con vista top-down para dispositivos móviles
+              Android.
+            </p>
+            <div class="tech-stack">
+              <i class="devicon-unity-original"></i
+              ><i class="devicon-csharp-plain colored"></i>
+            </div>
+          </a>
+          <div class="card" style="opacity: 0.8; border-style: dashed">
+            <div class="card-header">
+              <span class="tech-icon">🅰️</span
+              ><span class="btn-visit" data-es="Próximamente" data-en="Soon"
+                >Próximamente</span
+              >
+            </div>
+            <h4>DevFlow Dashboard</h4>
+            <p
+              data-es="Panel modular avanzado con Angular v18 y Signals."
+              data-en="Advanced modular dashboard with Angular v18 and Signals."
+            >
+              Panel modular avanzado con Angular v18 y Signals.
+            </p>
+            <div class="tech-stack">
+              <i class="devicon-angular-plain colored"></i
+              ><i class="devicon-typescript-plain colored"></i>
+            </div>
+          </div>
+          <div class="card" style="opacity: 0.8; border-style: dashed">
+            <div class="card-header">
+              <span class="tech-icon">🧪</span
+              ><span class="btn-visit" data-es="Próximamente" data-en="Soon"
+                >Próximamente</span
+              >
+            </div>
+            <h4>QuickMock API Studio</h4>
+            <p
+              data-es="Herramienta para mocking de APIs construida con React."
+              data-en="API mocking tool built with React."
+            >
+              Herramienta para mocking de APIs construida con React.
+            </p>
+            <div class="tech-stack">
+              <i class="devicon-react-original colored"></i
+              ><i class="devicon-nodejs-plain colored"></i>
+            </div>
+          </div>
+        </div>
+        <div class="line" style="margin-top: 20px">
+          <span class="ln">50</span>]
+        </div>
+      </div>
+
+      <div id="view-contacto.js" class="editor-view">
+        <div class="line">
+          <span class="ln">1</span><span class="keyword">export function</span>
+          <span class="prop" data-es="obtenerContacto" data-en="getContact"
+            >obtenerContacto</span
+          >() {
+        </div>
+        <div class="line">
+          <span class="ln">2</span> <span class="keyword">return</span> {
+        </div>
+        <div class="line indent">
+          <span class="ln">3</span><span class="prop">email</span>:
+          <a href="mailto:josmer1997@hotmail.es" class="contact-link"
+            >"josmer1997@hotmail.es"</a
+          >,
+        </div>
+        <div class="line indent">
+          <span class="ln">4</span><span class="prop">linkedin</span>:
+          <a
+            href="https://www.linkedin.com/in/josmer-bertel-calle-12569a236/"
+            target="_blank"
+            class="contact-link"
+            >"in/josmer-bertel"</a
+          >,
+        </div>
+        <div class="line indent">
+          <span class="ln">5</span><span class="prop">github</span>:
+          <a
+            href="https://github.com/JOSY12"
+            target="_blank"
+            class="contact-link"
+            >"JOSY12"</a
+          >,
+        </div>
+        <div class="line indent">
+          <span class="ln">6</span
+          ><span class="prop" data-es="descargar_cv" data-en="download_cv"
+            >descargar_cv</span
+          >:
+          <a
+            id="cv-link"
+            href="./espResume cv-JOSMER BERTEL CALLE.pdf"
+            class="contact-link"
+            data-es='"Descargar CV Español"'
+            data-en='"Download CV English"'
+            >"Descargar CV Español"</a
+          >
+        </div>
+        <div class="line"><span class="ln">7</span> };</div>
+        <div class="line"><span class="ln">8</span>}</div>
+      </div>
+    </main>
+
+    <script>
+      // Cargar idioma guardado o usar español por defecto
+      let currentLang = localStorage.getItem('userLang') || 'es'
+      let activeFile = 'index.html'
+
+      function setLang(lang) {
+        currentLang = lang
+        localStorage.setItem('userLang', lang) // Guardar elección
+
+        document
+          .querySelectorAll('.lang-selector button')
+          .forEach((b) => b.classList.remove('active'))
+        document.getElementById('btn-' + lang).classList.add('active')
+
+        // Traducir contenidos
+        document.querySelectorAll('[data-' + lang + ']').forEach((el) => {
+          el.innerText = el.getAttribute('data-' + lang)
+        })
+
+        // Actualizar link de CV
+        document.getElementById('cv-link').href =
+          lang === 'es'
+            ? './espResume cv-JOSMER BERTEL CALLE.pdf'
+            : './engResume cv-JOSMER BERTEL CALLE.pdf'
+
+        updateUI()
+      }
+
+      function switchFile(fileName) {
+        activeFile = fileName
+        updateUI()
+      }
+
+      function updateUI() {
+        // Actualizar nombre de pestaña dinámicamente según el idioma
+        const sidebarItem = document.querySelector(
+          `.file-item[onclick*="${activeFile}"] .f-name`
+        )
+        document.getElementById('tab-header').innerText = sidebarItem.innerText
+
+        // Actualizar Sidebar
+        document.querySelectorAll('.file-item').forEach((item) => {
+          item.classList.toggle(
+            'active',
+            item.getAttribute('onclick').includes(activeFile)
+          )
+        })
+
+        // Actualizar Vista del Editor
+        document.querySelectorAll('.editor-view').forEach((view) => {
+          view.classList.toggle('active', view.id === 'view-' + activeFile)
+        })
+      }
+
+      // Inicializar al cargar la página
+      window.onload = () => {
+        setLang(currentLang)
+      }
+    </script>
+  </body>
 </html>
