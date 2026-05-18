@@ -75,10 +75,10 @@
           Explorador
         </div>
         <ul class="file-list">
-          <li class="file-item active" onclick="switchFile('index.html')">
+          <li class="file-item active" onclick="switchFile('index.js')">
             <span class="icon">📄</span>
-            <span class="f-name" data-es="index.html" data-en="profile.html"
-              >index.html</span
+            <span class="f-name" data-es="index.js" data-en="profile.js"
+              >index.js</span
             >
           </li>
           <li class="file-item" onclick="switchFile('proyectos.json')">
@@ -108,15 +108,15 @@
       <div class="stacked-container">
         <div
           class="tab-accordion-header"
-          id="header-index.html"
-          onclick="setActiveTab('index.html')"
+          id="header-index.js"
+          onclick="setActiveTab('index.js')"
         >
-          <span class="tab-title-text" data-file="index.html">index.html</span>
-          <span class="tab-close-btn" onclick="closeTab('index.html', event)"
+          <span class="tab-title-text" data-file="index.js">index.js</span>
+          <span class="tab-close-btn" onclick="closeTab('index.js', event)"
             >✕</span
           >
         </div>
-        <div id="view-index.html" class="editor-view active">
+        <div id="view-index.js" class="editor-view active">
           <div class="line">
             <span class="ln">1</span><span class="keyword">import</span>
             <span class="prop">projects</span> <span class="keyword">from</span>
@@ -630,8 +630,8 @@
 
     <script>
       let currentLang = localStorage.getItem('userLang') || 'es'
-      let visibleFiles = ['index.html', 'proyectos.json', 'contacto.js']
-      let activeFile = 'index.html'
+      let visibleFiles = ['index.js', 'proyectos.json', 'contacto.js']
+      let activeFile = 'index.js'
 
       function setLang(lang) {
         currentLang = lang
