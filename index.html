@@ -10,6 +10,63 @@
     />
     <link rel="icon" href="./logo-color.png" />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      .tabs {
+        display: none !important;
+      }
+
+      .stacked-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+      }
+
+      .tab-accordion-header {
+        background-color: var(--tab-inactive, #2d2d2d);
+        color: #969696;
+        padding: 8px 20px;
+        font-size: 13px;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--border, #333);
+        user-select: none;
+      }
+
+      .tab-accordion-header.active {
+        background-color: var(--tab-active, #1e1e1e);
+        color: white;
+        border-left: 2px solid var(--accent, #4ec9b0);
+      }
+
+      .tab-close-btn {
+        cursor: pointer;
+        opacity: 0.6;
+        font-size: 11px;
+        padding: 2px 6px;
+      }
+
+      .tab-close-btn:hover {
+        opacity: 1;
+        background: #333;
+        border-radius: 2px;
+      }
+
+      .editor-view {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        display: none;
+        background-color: var(--bg, #1e1e1e);
+      }
+
+      .editor-view.active {
+        display: block;
+      }
+    </style>
   </head>
   <body>
     <aside class="sidebar">
@@ -48,453 +105,555 @@
     </aside>
 
     <main class="main-editor">
-      <div class="tabs" id="tab-container">
-        <div class="tab active" id="tab-header">index.html</div>
-      </div>
-      <div id="view-index.html" class="editor-view active">
-        <div class="line">
-          <span class="ln">1</span
-          ><span
-            class="comment"
-            data-es="// Perfil Profesional"
-            data-en="// Professional Profile"
-            >// Perfil Profesional</span
+      <div class="stacked-container">
+        <div
+          class="tab-accordion-header"
+          id="header-index.html"
+          onclick="setActiveTab('index.html')"
+        >
+          <span class="tab-title-text" data-file="index.html">index.html</span>
+          <span class="tab-close-btn" onclick="closeTab('index.html', event)"
+            >✕</span
           >
         </div>
-        <div class="line">
-          <span class="ln">2</span><span class="keyword">const</span>
-          <span class="prop">josmer</span> = {
+        <div id="view-index.html" class="editor-view active">
+          <div class="line">
+            <span class="ln">1</span><span class="keyword">import</span>
+            <span class="prop">projects</span> <span class="keyword">from</span>
+            <span class="string">"./proyectos.json"</span>;
+          </div>
+          <div class="line">
+            <span class="ln">2</span
+            ><span
+              class="comment"
+              data-es="// Perfil Profesional"
+              data-en="// Professional Profile"
+              >// Perfil Profesional</span
+            >
+          </div>
+          <div class="line">
+            <span class="ln">3</span><span class="keyword">const</span>
+            <span class="prop">josmer</span> = {
+          </div>
+          <div class="line indent">
+            <span class="ln">4</span
+            ><span class="prop" data-es="nombre" data-en="name">nombre</span>:
+            <span class="string">"Josmer Uriel Bertel Calle"</span>,
+          </div>
+          <div class="line indent">
+            <span class="ln">5</span
+            ><span class="prop" data-es="especialidad" data-en="specialty"
+              >especialidad</span
+            >: <span class="string">"Fullstack Web & Game Developer"</span>,
+          </div>
+          <div class="line indent">
+            <span class="ln">6</span
+            ><span class="prop" data-es="intereses" data-en="interests"
+              >intereses</span
+            >: [<span class="string" data-es='"Diseño"' data-en='"Design"'
+              >"Diseño"</span
+            >,
+            <span class="string" data-es='"Aprender"' data-en='"Learning"'
+              >"Aprender"</span
+            >,
+            <span class="string" data-es='"Cocina"' data-en='"Cooking"'
+              >"Cocina"</span
+            >,
+            <span
+              class="string"
+              data-es='"bases de datos"'
+              data-en='"databases"'
+              >"bases de datos"</span
+            >, <span class="string">"Back-End"</span>],
+          </div>
+          <div class="line indent">
+            <span class="ln">7</span
+            ><span class="prop" data-es="educación" data-en="education"
+              >educación</span
+            >: [<span class="string">"soy henry bootcamp"</span>,
+            <span
+              class="string"
+              data-es='"TECNÓLOGO en analisis y desarrollo de software"'
+              data-en='"Software Analysis & Development Technologist"'
+              >"TECNÓLOGO en analisis y desarrollo de software"</span
+            >,
+            <span class="string" data-es='"autodidacta"' data-en='"self-taught"'
+              >"autodidacta"</span
+            >,
+            <span
+              class="string"
+              data-es='"Cursos en linea"'
+              data-en='"Online courses"'
+              >"Cursos en linea"</span
+            >, <span class="string">"Freecodecamp"</span>],
+          </div>
+          <div class="line indent">
+            <span class="ln">8</span
+            ><span class="prop" data-es="habilidades" data-en="skills"
+              >habilidades</span
+            >: [<span class="string">"Html"</span>,
+            <span class="string">"Css"</span>,
+            <span class="string">"Less"</span>,
+            <span class="string">"JavaScript"</span>,
+            <span class="string">"Tailwind"</span>,
+            <span class="string">"Boostrap"</span>,
+            <span class="string">"Mysql"</span>,
+            <span class="string">"React"</span>,
+            <span class="string">"Redux"</span>,
+            <span class="string">"Nodejs"</span>,
+            <span class="string">"Webpack"</span>,
+            <span class="string">"Git"</span>,
+            <span class="string">"Postgresql"</span>,
+            <span class="string">"Sequelise"</span>,
+            <span class="string">"Express"</span>,
+            <span class="string">"zustand"</span>,
+            <span class="string">"Mercadopago"</span>,
+            <span class="string">"Stripe"</span>,
+            <span class="string">"Docker"</span>,
+            <span class="string">"Typescript"</span>,
+            <span class="string">"Angular"</span>],
+          </div>
+          <div class="line indent">
+            <span class="ln">9</span
+            ><span class="prop" data-es="localización" data-en="location"
+              >localización</span
+            >: <span class="string">"Montelibano, Cordoba, Colombia"</span>
+          </div>
+          <div class="line"><span class="ln">10</span>};</div>
+          <div class="line"><span class="ln">11</span></div>
+          <div class="line">
+            <span class="ln">12</span><span class="keyword">const</span>
+            <span class="prop" data-es="proyectos" data-en="proyects"
+              >proyectos</span
+            >
+            = [
+          </div>
+          <div class="line indent">
+            <span class="ln">13</span>{ <span class="prop">name</span>:
+            <span class="string">"Techsells"</span>,
+            <span class="prop">platform</span>:
+            <span class="string">"Vercel (Web)"</span> },
+          </div>
+          <div class="line indent">
+            <span class="ln">14</span>{ <span class="prop">name</span>:
+            <span class="string">"QuickMock API Studio"</span>,
+            <span class="prop">platform</span>:
+            <span class="string">"Netlify (Web)"</span> },
+          </div>
+          <div class="line indent">
+            <span class="ln">15</span>{ <span class="prop">name</span>:
+            <span class="string">"Digital Garden Tracker-WEB"</span>,
+            <span class="prop">platform</span>:
+            <span class="string">"Netlify (Web) & Android"</span> },
+          </div>
+          <div class="line indent">
+            <span class="ln">16</span>{ <span class="prop">name</span>:
+            <span class="string">"Tap Tap Mine"</span>,
+            <span class="prop">platform</span>:
+            <span class="string">"Google Play (Mobile)"</span> },
+          </div>
+          <div class="line indent">
+            <span class="ln">17</span>{ <span class="prop">name</span>:
+            <span class="string">"Stellar Assault"</span>,
+            <span class="prop">platform</span>:
+            <span class="string">"Google Play (Mobile)"</span> },
+          </div>
+          <div class="line indent">
+            <span class="ln">18</span>{ <span class="prop">name</span>:
+            <span class="string">"Cave Scape"</span>,
+            <span class="prop">platform</span>:
+            <span class="string">"Google Play (Mobile)"</span> },
+          </div>
+          <div class="line indent">
+            <span class="ln">19</span>{ <span class="prop">name</span>:
+            <span class="string">"Fast-checkout"</span>,
+            <span class="prop">platform</span>:
+            <span class="string">"Vercel (Web)"</span> },
+          </div>
+          <div class="line indent">
+            <span class="ln">20</span>{ <span class="prop">name</span>:
+            <span class="string">"Cocina Pura"</span>,
+            <span class="prop">platform</span>:
+            <span class="string">"Vercel (Web)"</span> }
+          </div>
+          <div class="line"><span class="ln">21</span>];</div>
+          <div class="line"><span class="ln">22</span></div>
+          <div class="line">
+            <span class="ln">23</span
+            ><span
+              class="comment"
+              data-es="// Pasión por crear experiencias simples y atractivas."
+              data-en="// Passion for creating simple and attractive experiences."
+              >// Pasión por crear experiencias simples y atractivas.</span
+            >
+          </div>
         </div>
-        <div class="line indent">
-          <span class="ln">3</span
-          ><span class="prop" data-es="nombre" data-en="name">nombre</span>:
-          <span class="string">"Josmer Uriel Bertel Calle"</span>,
-        </div>
-        <div class="line indent">
-          <span class="ln">4</span
-          ><span class="prop" data-es="especialidad" data-en="specialty"
-            >especialidad</span
-          >: <span class="string">"Fullstack Web & Game Developer"</span>,
-        </div>
-        <div class="line indent">
-          <span class="ln">5</span
-          ><span class="prop" data-es="intereses" data-en="interests"
-            >intereses</span
-          >: [<span class="string" data-es='"Diseño"' data-en='"Design"'
-            >"Diseño"</span
-          >,
-          <span class="string" data-es='"Aprender"' data-en='"Learning"'
-            >"Aprender"</span
-          >,
-          <span class="string" data-es='"Cocina"' data-en='"Cooking"'
-            >"Cocina"</span
-          >,
-          <span class="string" data-es='"bases de datos"' data-en='"databases"'
-            >"bases de datos"</span
-          >, <span class="string">"Back-End"</span>],
-        </div>
-        <div class="line indent">
-          <span class="ln">6</span
-          ><span class="prop" data-es="educación" data-en="education"
-            >educación</span
-          >: [<span class="string">"soy henry bootcamp"</span>,
+
+        <div
+          class="tab-accordion-header"
+          id="header-proyectos.json"
+          onclick="setActiveTab('proyectos.json')"
+        >
+          <span class="tab-title-text" data-file="proyectos.json"
+            >proyectos.json</span
+          >
           <span
-            class="string"
-            data-es='"TECNÓLOGO en analisis y desarrollo de software"'
-            data-en='"Software Analysis & Development Technologist"'
-            >"TECNÓLOGO en analisis y desarrollo de software"</span
-          >,
-          <span class="string" data-es='"autodidacta"' data-en='"self-taught"'
-            >"autodidacta"</span
-          >,
-          <span
-            class="string"
-            data-es='"Cursos en linea"'
-            data-en='"Online courses"'
-            >"Cursos en linea"</span
-          >, <span class="string">"Freecodecamp"</span>],
-        </div>
-        <div class="line indent">
-          <span class="ln">7</span
-          ><span class="prop" data-es="habilidades" data-en="skills"
-            >habilidades</span
-          >: [<span class="string">"Html"</span>,
-          <span class="string">"Css"</span>, <span class="string">"Less"</span>,
-          <span class="string">"JavaScript"</span>,
-          <span class="string">"Tailwind"</span>,
-          <span class="string">"Boostrap"</span>,
-          <span class="string">"Mysql"</span>,
-          <span class="string">"React"</span>,
-          <span class="string">"Redux"</span>,
-          <span class="string">"Nodejs"</span>,
-          <span class="string">"Webpack"</span>,
-          <span class="string">"Git"</span>,
-          <span class="string">"Postgresql"</span>,
-          <span class="string">"Sequelise"</span>,
-          <span class="string">"Express"</span>,
-          <span class="string">"zustand"</span>,
-          <span class="string">"Mercadopago"</span>,
-          <span class="string">"Stripe"</span>,
-          <span class="string">"Docker"</span>,
-          <span class="string">"Typescript"</span>,
-          <span class="string">"Angular"</span>],
-        </div>
-        <div class="line indent">
-          <span class="ln">8</span
-          ><span class="prop" data-es="localización" data-en="location"
-            >localización</span
-          >: <span class="string">"Montelibano, Cordoba, Colombia"</span>
-        </div>
-        <div class="line"><span class="ln">9</span>};</div>
-        <div class="line">
-          <span class="ln">11</span
-          ><span
-            class="comment"
-            data-es="// Pasión por crear experiencias simples y atractivas."
-            data-en="// Passion for creating simple and attractive experiences."
-            >// Pasión por crear experiencias simples y atractivas.</span
+            class="tab-close-btn"
+            onclick="closeTab('proyectos.json', event)"
+            >✕</span
           >
         </div>
-      </div>
-
-      <div id="view-proyectos.json" class="editor-view">
-        <div class="line">
-          <span class="ln">1</span
-          ><span
-            class="keyword"
-            data-es='"proyectos_recientes"'
-            data-en='"recent_projects"'
-            >"proyectos_recientes"</span
-          >: [
-        </div>
-        <div class="grid">
-          <a
-            href="https://proyecto-techsells.vercel.app/"
-            target="_blank"
-            class="card"
-          >
-            <div class="card-header">
-              <span class="tech-icon">⚛️</span
-              ><span class="btn-visit" data-es="Visitar" data-en="Visit"
-                >Visitar</span
-              >
-            </div>
-            <h4>Techsells</h4>
-            <p
-              data-es="E-commerce completo con React,  Stripe. Panel de usuario e historial."
-              data-en="Full E-commerce with React,  Stripe. User panel and history."
+        <div id="view-proyectos.json" class="editor-view">
+          <div class="line">
+            <span class="ln">1</span
+            ><span
+              class="keyword"
+              data-es='"proyectos_recientes"'
+              data-en='"recent_projects"'
+              >"proyectos_recientes"</span
+            >: [
+          </div>
+          <div class="grid">
+            <a
+              href="https://proyecto-techsells.vercel.app/"
+              target="_blank"
+              class="card"
             >
-              E-commerce completo con React, Stripe. Panel de usuario e
-              historial.
-            </p>
-            <div class="tech-stack">
-              <i class="devicon-react-original colored"></i
-              ><i class="devicon-postgresql-plain colored"></i>
-              <i class="devicon-nodejs-plain colored"></i>
-              <i class="devicon-zustand-plain"></i>
-<i class="devicon-tailwindcss-original colored"></i>
-
-            </div>
-          </a>
-          <a
-            href="https://quickapi-studio.netlify.app/"
-            target="_blank"
-            class="card"
-          >
-            <div class="card-header">
-              <span class="tech-icon">🧪</span
-              ><span class="btn-visit" data-es="Visitar" data-en="Visit"
-                >Visitar</span
+              <div class="card-header">
+                <span class="tech-icon">⚛️</span
+                ><span class="btn-visit" data-es="Visitar" data-en="Visit"
+                  >Visitar</span
+                >
+              </div>
+              <h4>Techsells</h4>
+              <p
+                data-es="E-commerce completo con React, Stripe. Panel de usuario e historial."
+                data-en="Full E-commerce with React, Stripe. User panel and history."
               >
-            </div>
-            <h4>QuickMock API Studio</h4>
-            <p
-              data-es="Es una herramienta de productividad para desarrolladores que necesitan probar un frontend sin tener el backend listo. Permite transformar un objeto JSON  "
-              data-en="It's a productivity tool for developers who need to test a frontend without having the backend ready. It allows you to transform a static JSON object "
+                E-commerce completo con React, Stripe. Panel de usuario e
+                historial.
+              </p>
+              <div class="tech-stack">
+                <i class="devicon-react-original colored"></i
+                ><i class="devicon-postgresql-plain colored"></i>
+                <i class="devicon-nodejs-plain colored"></i>
+                <i class="devicon-zustand-plain"></i>
+                <i class="devicon-tailwindcss-original colored"></i>
+              </div>
+            </a>
+            <a
+              href="https://quickapi-studio.netlify.app/"
+              target="_blank"
+              class="card"
             >
-              Es una herramienta de productividad para desarrolladores que
-              necesitan probar un frontend sin tener el backend listo. Permite
-              transformar un objeto JSON
-            </p>
-            <div class="tech-stack">
-              <i class="devicon-react-original colored"></i
-              ><i class="devicon-nodejs-plain colored"></i>
-              <i class="devicon-typescript-plain colored"></i>
-<i class="devicon-tailwindcss-original colored"></i>
-
-            </div>
-          </a>
-
-          <div
-         
-            class="card"
-          >
-            <div class="card-header">
-              <span class="tech-icon">🧪</span
+              <div class="card-header">
+                <span class="tech-icon">🧪</span
+                ><span class="btn-visit" data-es="Visitar" data-en="Visit"
+                  >Visitar</span
+                >
+              </div>
+              <h4>QuickMock API Studio</h4>
+              <p
+                data-es="Es una herramienta de productividad para desarrolladores que necesitan probar un frontend sin tener el backend listo. Permite transformar un objeto JSON"
+                data-en="It's a productivity tool for developers who need to test a frontend without having the backend ready. It allows you to transform a static JSON object"
               >
-              <a  
-                  style="text-decoration-line: none;"
-              href="https://digitalgardentracker-web.netlify.app/"
-            target="_blank"
-            >
-                   <span
-                class="btn-visit"
-                data-es="Visitar web"
-                data-en="Visit website"
-                >Visitar WEB</span
-              >
+                Es una herramienta de productividad para desarrolladores que
+                necesitan probar un frontend sin tener el backend listo. Permite
+                transformar un objeto JSON
+              </p>
+              <div class="tech-stack">
+                <i class="devicon-react-original colored"></i
+                ><i class="devicon-nodejs-plain colored"></i>
+                <i class="devicon-typescript-plain colored"></i>
+                <i class="devicon-tailwindcss-original colored"></i>
+              </div>
+            </a>
 
-              </a>
-                <a 
-                 style="text-decoration-line: none;"
-                href="https://github.com/JOSY12/DigitalGardenTracker"
-            target="_blank"
+            <div class="card">
+              <div class="card-header">
+                <span class="tech-icon">🧪</span>
+                <a
+                  style="text-decoration-line: none"
+                  href="https://digitalgardentracker-web.netlify.app/"
+                  target="_blank"
+                >
+                  <span
+                    class="btn-visit"
+                    data-es="Visitar web"
+                    data-en="Visit website"
+                    >Visitar WEB</span
                   >
-                   <span
-                class="btn-visit"
-                data-es="Visitar App"
-                data-en="Visit App"
-                >Visitar App</span
+                </a>
+                <a
+                  style="text-decoration-line: none"
+                  href="https://github.com/JOSY12/DigitalGardenTracker"
+                  target="_blank"
+                >
+                  <span
+                    class="btn-visit"
+                    data-es="Visitar App"
+                    data-en="Visit App"
+                    >Visitar App</span
+                  >
+                </a>
+              </div>
+              <h4>Digital Garden Tracker-WEB</h4>
+              <p
+                data-es="es una app de productividad que transforma tus hábitos en plantas virtuales para medir tu disciplina. Te sirve para mantener la constancia diaria, gestionar tus rutinas, y ver el historial exacto de cuántas metas has logrado completar o cuáles has abandonado."
+                data-en="is a productivity app that turns your habits into virtual plants to measure your discipline. It helps you maintain daily consistency, manage your routines, and track the exact history of how many goals you have successfully completed or abandoned."
               >
-
-              </a>
+                es una app de productividad que transforma tus hábitos en
+                plantas virtuales para medir tu disciplina. Te sirve para
+                mantener la constancia diaria, gestionar tus rutinas, y ver el
+                historial exacto de cuántas metas has logrado completar o cuáles
+                has abandonado.
+              </p>
+              <div class="tech-stack">
+                <i class="devicon-react-original colored"></i
+                ><i class="devicon-nodejs-plain colored"></i>
+                <i class="devicon-expo-original"></i>
+                <i class="devicon-typescript-plain colored"></i>
+                <i class="devicon-androidstudio-plain"></i>
+                <i class="devicon-tailwindcss-original colored"></i>
+              </div>
             </div>
-            <h4>Digital Garden Tracker-WEB</h4>
-            <p
-              data-es="es una app de productividad que transforma tus hábitos en plantas virtuales para medir tu disciplina. Te sirve para mantener la constancia diaria, gestionar tus rutinas, y ver el historial exacto de cuántas metas has logrado completar o cuáles has abandonado. "
-              data-en="is a productivity app that turns your habits into virtual plants to measure your discipline. It helps you maintain daily consistency, manage your routines, and track the exact history of how many goals you have successfully completed or abandoned."
+
+            <a
+              href="https://play.google.com/store/apps/details?id=com.MisfitGames.TapTapMine"
+              target="_blank"
+              class="card"
             >
-             es una app de productividad que transforma tus hábitos en plantas virtuales para medir tu disciplina. Te sirve para mantener la constancia diaria, gestionar tus rutinas, y ver el historial exacto de cuántas metas has logrado completar o cuáles has abandonado.
-            </p>
-            <div class="tech-stack">
-              <i class="devicon-react-original colored"></i
-              ><i class="devicon-nodejs-plain colored"></i>
-              <i class="devicon-expo-original"></i>
-<i class="devicon-typescript-plain colored"></i>
-<i class="devicon-androidstudio-plain"></i>
-<i class="devicon-tailwindcss-original colored"></i>
+              <div class="card-header">
+                <span class="tech-icon">⛏️</span
+                ><span class="btn-visit">Google Play</span>
+              </div>
+              <h4>Tap Tap Mine</h4>
+              <p
+                data-es="Juego incremental 2D para Android hecho en Unity. Sin anuncios forzados."
+                data-en="2D incremental game for Android made in Unity. No forced ads."
+              >
+                Juego incremental 2D para Android hecho en Unity. Sin anuncios
+                forzados.
+              </p>
+              <div class="tech-stack">
+                <i class="devicon-unity-original"></i
+                ><i class="devicon-csharp-plain colored"></i>
+                <i class="devicon-unity-plain"></i>
+              </div>
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.MisfitGames.StellarAsault"
+              target="_blank"
+              class="card"
+            >
+              <div class="card-header">
+                <span class="tech-icon">🚀</span
+                ><span class="btn-visit">Google Play</span>
+              </div>
+              <h4>Stellar Assault</h4>
+              <p
+                data-es="Wave survivor espacial en 2D. Supervivencia y oleadas infinitas."
+                data-en="2D space wave survivor. Survival and infinite waves."
+              >
+                Wave survivor espacial en 2D. Supervivencia y oleadas infinitas.
+              </p>
+              <div class="tech-stack">
+                <i class="devicon-unity-original"></i
+                ><i class="devicon-csharp-plain colored"></i>
+                <i class="devicon-unity-plain"></i>
+              </div>
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.MisfitGames.CaveScape"
+              target="_blank"
+              class="card"
+            >
+              <div class="card-header">
+                <span class="tech-icon">🕹️</span
+                ><span class="btn-visit">Google Play</span>
+              </div>
+              <h4>Cave Scape</h4>
+              <p
+                data-es="Plataformas 2D con vista top-down para dispositivos móviles Android."
+                data-en="2D platformer with top-down view for Android mobile devices."
+              >
+                Plataformas 2D con vista top-down para dispositivos móviles
+                Android.
+              </p>
+              <div class="tech-stack">
+                <i class="devicon-unity-original"></i
+                ><i class="devicon-csharp-plain colored"></i>
+                <i class="devicon-unity-plain"></i>
+              </div>
+            </a>
 
-
-
+            <a
+              href="https://fast-checkout.vercel.app/"
+              target="_blank"
+              class="card"
+            >
+              <div class="card-header">
+                <span class="tech-icon">⚡</span
+                ><span class="btn-visit" data-es="Visitar" data-en="Visit"
+                  >Visitar</span
+                >
+              </div>
+              <h4>Fast-checkout</h4>
+              <p
+                data-es="Demo de sistema de pagos minimalista con carrito y filtrado de productos."
+                data-en="Minimalist payment system demo with cart and product filtering."
+              >
+                Demo de sistema de pagos minimalista con carrito y filtrado de
+                productos.
+              </p>
+              <div class="tech-stack">
+                <i class="devicon-javascript-plain colored"></i
+                ><i class="devicon-css3-plain colored"></i>
+                <i class="devicon-tailwindcss-original colored"></i>
+              </div>
+            </a>
+            <a
+              href="https://cocinapura.vercel.app/"
+              target="_blank"
+              class="card"
+            >
+              <div class="card-header">
+                <span class="tech-icon">🥗</span
+                ><span class="btn-visit" data-es="Visitar" data-en="Visit"
+                  >Visitar</span
+                >
+              </div>
+              <h4>Cocina Pura</h4>
+              <p
+                data-es="Plantilla minimalista para blogs de cocina y recetas con navegación simple."
+                data-en="Minimalist template for cooking and recipe blogs with simple navigation."
+              >
+                Plantilla minimalista para blogs de cocina y recetas con
+                navegación simple.
+              </p>
+              <div class="tech-stack">
+                <i class="devicon-html5-plain colored"></i
+                ><i class="devicon-css3-plain colored"></i>
+              </div>
+            </a>
+            <div class="card" style="opacity: 0.8; border-style: dashed">
+              <div class="card-header">
+                <span class="tech-icon">🅰️</span
+                ><span class="btn-visit" data-es="Próximamente" data-en="Soon"
+                  >Próximamente</span
+                >
+              </div>
+              <h4>DevFlow Dashboard</h4>
+              <p
+                data-es="Panel modular avanzado con Angular v18 y Signals."
+                data-en="Advanced modular dashboard with Angular v18 and Signals."
+              >
+                Panel modular avanzado con Angular v18 y Signals.
+              </p>
+              <div class="tech-stack">
+                <i class="devicon-angular-plain colored"></i
+                ><i class="devicon-typescript-plain colored"></i>
+              </div>
             </div>
           </div>
-
-          <a
-            href="https://play.google.com/store/apps/details?id=com.MisfitGames.TapTapMine"
-            target="_blank"
-            class="card"
-          >
-            <div class="card-header">
-              <span class="tech-icon">⛏️</span
-              ><span class="btn-visit">Google Play</span>
-            </div>
-            <h4>Tap Tap Mine</h4>
-            <p
-              data-es="Juego incremental 2D para Android hecho en Unity. Sin anuncios forzados."
-              data-en="2D incremental game for Android made in Unity. No forced ads."
-            >
-              Juego incremental 2D para Android hecho en Unity. Sin anuncios
-              forzados.
-            </p>
-            <div class="tech-stack">
-              <i class="devicon-unity-original"></i
-              ><i class="devicon-csharp-plain colored"></i>
-<i class="devicon-unity-plain"></i>
-
-            </div>
-          </a>
-          <a
-            href="https://play.google.com/store/apps/details?id=com.MisfitGames.StellarAsault"
-            target="_blank"
-            class="card"
-          >
-            <div class="card-header">
-              <span class="tech-icon">🚀</span
-              ><span class="btn-visit">Google Play</span>
-            </div>
-            <h4>Stellar Assault</h4>
-            <p
-              data-es="Wave survivor espacial en 2D. Supervivencia y oleadas infinitas."
-              data-en="2D space wave survivor. Survival and infinite waves."
-            >
-              Wave survivor espacial en 2D. Supervivencia y oleadas infinitas.
-            </p>
-            <div class="tech-stack">
-              <i class="devicon-unity-original"></i
-              ><i class="devicon-csharp-plain colored"></i>
-              <i class="devicon-unity-plain"></i>
-
-            </div>
-          </a>
-          <a
-            href="https://play.google.com/store/apps/details?id=com.MisfitGames.CaveScape"
-            target="_blank"
-            class="card"
-          >
-            <div class="card-header">
-              <span class="tech-icon">🕹️</span
-              ><span class="btn-visit">Google Play</span>
-            </div>
-            <h4>Cave Scape</h4>
-            <p
-              data-es="Plataformas 2D con vista top-down para dispositivos móviles Android."
-              data-en="2D platformer with top-down view for Android mobile devices."
-            >
-              Plataformas 2D con vista top-down para dispositivos móviles
-              Android.
-            </p>
-            <div class="tech-stack">
-              <i class="devicon-unity-original"></i
-              ><i class="devicon-csharp-plain colored"></i>
-              <i class="devicon-unity-plain"></i>
-
-            </div>
-          </a>
-
-          <a
-            href="https://fast-checkout.vercel.app/"
-            target="_blank"
-            class="card"
-          >
-            <div class="card-header">
-              <span class="tech-icon">⚡</span
-              ><span class="btn-visit" data-es="Visitar" data-en="Visit"
-                >Visitar</span
-              >
-            </div>
-            <h4>Fast-checkout</h4>
-            <p
-              data-es="Demo de sistema de pagos minimalista con carrito y filtrado de productos."
-              data-en="Minimalist payment system demo with cart and product filtering."
-            >
-              Demo de sistema de pagos minimalista con carrito y filtrado de
-              productos.
-            </p>
-            <div class="tech-stack">
-              <i class="devicon-javascript-plain colored"></i
-              ><i class="devicon-css3-plain colored"></i>
-              <i class="devicon-tailwindcss-original colored"></i>
-
-            </div>
-          </a>
-          <a href="https://cocinapura.vercel.app/" target="_blank" class="card">
-            <div class="card-header">
-              <span class="tech-icon">🥗</span
-              ><span class="btn-visit" data-es="Visitar" data-en="Visit"
-                >Visitar</span
-              >
-            </div>
-            <h4>Cocina Pura</h4>
-            <p
-              data-es="Plantilla minimalista para blogs de cocina y recetas con navegación simple."
-              data-en="Minimalist template for cooking and recipe blogs with simple navigation."
-            >
-              Plantilla minimalista para blogs de cocina y recetas con
-              navegación simple.
-            </p>
-            <div class="tech-stack">
-              <i class="devicon-html5-plain colored"></i
-              ><i class="devicon-css3-plain colored"></i>
-            </div>
-          </a>
-          <div class="card" style="opacity: 0.8; border-style: dashed">
-            <div class="card-header">
-              <span class="tech-icon">🅰️</span
-              ><span class="btn-visit" data-es="Próximamente" data-en="Soon"
-                >Próximamente</span
-              >
-            </div>
-            <h4>DevFlow Dashboard</h4>
-            <p
-              data-es="Panel modular avanzado con Angular v18 y Signals."
-              data-en="Advanced modular dashboard with Angular v18 and Signals."
-            >
-              Panel modular avanzado con Angular v18 y Signals.
-            </p>
-            <div class="tech-stack">
-              <i class="devicon-angular-plain colored"></i
-              ><i class="devicon-typescript-plain colored"></i>
-            </div>
+          <div class="line" style="margin-top: 20px">
+            <span class="ln">50</span>]
           </div>
-        </a>
-        <div class="line" style="margin-top: 20px">
-          <span class="ln">50</span>]
         </div>
-      </div>
 
-      <div id="view-contacto.js" class="editor-view">
-        <div class="line">
-          <span class="ln">1</span><span class="keyword">export function</span>
-          <span class="prop" data-es="obtenerContacto" data-en="getContact"
-            >obtenerContacto</span
-          >() {
-        </div>
-        <div class="line">
-          <span class="ln">2</span> <span class="keyword">return</span> {
-        </div>
-        <div class="line indent">
-          <span class="ln">3</span><span class="prop">email</span>:
-          <a href="mailto:josmer1997@hotmail.es" class="contact-link"
-            >"josmer1997@hotmail.es"</a
-          >,
-        </div>
-        <div class="line indent">
-          <span class="ln">4</span><span class="prop">linkedin</span>:
-          <a
-            href="https://www.linkedin.com/in/josmer-bertel-calle-12569a236/"
-            target="_blank"
-            class="contact-link"
-            >"in/josmer-bertel"</a
-          >,
-        </div>
-        <div class="line indent">
-          <span class="ln">5</span><span class="prop">github</span>:
-          <a
-            href="https://github.com/JOSY12"
-            target="_blank"
-            class="contact-link"
-            >"JOSY12"</a
-          >,
-        </div>
-        <div class="line indent">
-          <span class="ln">6</span
-          ><span class="prop" data-es="descargar_cv" data-en="download_cv"
-            >descargar_cv</span
-          >:
-          <a
-            id="cv-link"
-            href="./espResume cv-JOSMER BERTEL CALLE.pdf"
-            class="contact-link"
-            data-es='"Descargar CV Español"'
-            data-en='"Download CV English"'
-            >"Descargar CV Español"</a
+        <div
+          class="tab-accordion-header"
+          id="header-contacto.js"
+          onclick="setActiveTab('contacto.js')"
+        >
+          <span class="tab-title-text" data-file="contacto.js"
+            >contacto.js</span
+          >
+          <span class="tab-close-btn" onclick="closeTab('contacto.js', event)"
+            >✕</span
           >
         </div>
-        <div class="line"><span class="ln">7</span> };</div>
-        <div class="line"><span class="ln">8</span>}</div>
+        <div id="view-contacto.js" class="editor-view">
+          <div class="line">
+            <span class="ln">1</span
+            ><span class="keyword">export function</span>
+            <span class="prop" data-es="obtenerContacto" data-en="getContact"
+              >obtenerContacto</span
+            >() {
+          </div>
+          <div class="line">
+            <span class="ln">2</span> <span class="keyword">return</span> {
+          </div>
+          <div class="line indent">
+            <span class="ln">3</span><span class="prop">email</span>:
+            <a href="mailto:josmer1997@hotmail.es" class="contact-link"
+              >"josmer1997@hotmail.es"</a
+            >,
+          </div>
+          <div class="line indent">
+            <span class="ln">4</span><span class="prop">linkedin</span>:
+            <a
+              href="https://www.linkedin.com/in/josmer-bertel-calle-12569a236/"
+              target="_blank"
+              class="contact-link"
+              >"in/josmer-bertel"</a
+            >,
+          </div>
+          <div class="line indent">
+            <span class="ln">5</span><span class="prop">github</span>:
+            <a
+              href="https://github.com/JOSY12"
+              target="_blank"
+              class="contact-link"
+              >"JOSY12"</a
+            >,
+          </div>
+          <div class="line indent">
+            <span class="ln">6</span
+            ><span class="prop" data-es="descargar_cv" data-en="download_cv"
+              >descargar_cv</span
+            >:
+            <a
+              id="cv-link"
+              href="./espResume cv-JOSMER BERTEL CALLE.pdf"
+              class="contact-link"
+              data-es='"Descargar CV Español"'
+              data-en='"Download CV English"'
+              >"Descargar CV Español"</a
+            >
+          </div>
+          <div class="line"><span class="ln">7</span> };</div>
+          <div class="line"><span class="ln">8</span>}</div>
+        </div>
       </div>
     </main>
 
     <script>
-      // Cargar idioma guardado o usar español por defecto
       let currentLang = localStorage.getItem('userLang') || 'es'
+      let visibleFiles = ['index.html', 'proyectos.json', 'contacto.js']
       let activeFile = 'index.html'
 
       function setLang(lang) {
         currentLang = lang
-        localStorage.setItem('userLang', lang) // Guardar elección
+        localStorage.setItem('userLang', lang)
 
         document
           .querySelectorAll('.lang-selector button')
           .forEach((b) => b.classList.remove('active'))
         document.getElementById('btn-' + lang).classList.add('active')
 
-        // Traducir contenidos
         document.querySelectorAll('[data-' + lang + ']').forEach((el) => {
           el.innerText = el.getAttribute('data-' + lang)
         })
 
-        // Actualizar link de CV
+        document.querySelectorAll('.tab-title-text').forEach((el) => {
+          const fileId = el.getAttribute('data-file')
+          const sidebarItem = document.querySelector(
+            `.file-item[onclick*="${fileId}"] .f-name`
+          )
+          if (sidebarItem) el.innerText = sidebarItem.innerText
+        })
+
         document.getElementById('cv-link').href =
           lang === 'es'
             ? './espResume cv-JOSMER BERTEL CALLE.pdf'
@@ -504,32 +663,62 @@
       }
 
       function switchFile(fileName) {
+        if (!visibleFiles.includes(fileName)) {
+          visibleFiles.push(fileName)
+        }
         activeFile = fileName
         updateUI()
       }
 
-      function updateUI() {
-        // Actualizar nombre de pestaña dinámicamente según el idioma
-        const sidebarItem = document.querySelector(
-          `.file-item[onclick*="${activeFile}"] .f-name`
-        )
-        document.getElementById('tab-header').innerText = sidebarItem.innerText
+      function setActiveTab(fileName) {
+        activeFile = fileName
+        updateUI()
+      }
 
-        // Actualizar Sidebar
-        document.querySelectorAll('.file-item').forEach((item) => {
-          item.classList.toggle(
+      function closeTab(fileName, event) {
+        if (event) event.stopPropagation()
+
+        visibleFiles = visibleFiles.filter((f) => f !== fileName)
+
+        if (activeFile === fileName) {
+          if (visibleFiles.length > 0) {
+            activeFile = visibleFiles[visibleFiles.length - 1]
+          } else {
+            activeFile = null
+          }
+        }
+        updateUI()
+      }
+
+      function updateUI() {
+        document.querySelectorAll('.tab-accordion-header').forEach((header) => {
+          const fileId = header.id.replace('header-', '')
+          if (visibleFiles.includes(fileId)) {
+            header.style.display = 'flex'
+            header.classList.toggle('active', fileId === activeFile)
+          } else {
+            header.style.display = 'none'
+          }
+        })
+
+        document.querySelectorAll('.editor-view').forEach((view) => {
+          const viewId = view.id.replace('view-', '')
+          view.classList.toggle(
             'active',
-            item.getAttribute('onclick').includes(activeFile)
+            viewId === activeFile && visibleFiles.includes(viewId)
           )
         })
 
-        // Actualizar Vista del Editor
-        document.querySelectorAll('.editor-view').forEach((view) => {
-          view.classList.toggle('active', view.id === 'view-' + activeFile)
+        document.querySelectorAll('.file-item').forEach((item) => {
+          const itemOnClick = item.getAttribute('onclick')
+          const matchesActive = activeFile && itemOnClick.includes(activeFile)
+          item.classList.toggle(
+            'active',
+            !!matchesActive && visibleFiles.includes(activeFile)
+          )
         })
       }
 
-      // Inicializar al cargar la página
       window.onload = () => {
         setLang(currentLang)
       }
